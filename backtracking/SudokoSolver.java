@@ -28,6 +28,8 @@ public class SudokoSolver {
             sudokoSolve(board, ri, rj);
         } else {
             for (int op = 1; op <= 9; op++) {
+                // func to check is number is present in horizontal or vertical or 3*3 matrix
+                // if it returns true it will check for other number
                 if (isValidPlace(board, row, col, op)) {
                     board[row][col] = op;
                     sudokoSolve(board, ri, rj);
