@@ -13,30 +13,35 @@ public class KnapsackProblem01 {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int val[] = new int[n];
+        int value[] = new int[n];
         for (int i = 0; i < n; i++)
-            val[i] = sc.nextInt();
-        int we[] = new int[n];
+            value[i] = sc.nextInt();
+        int weight[] = new int[n];
         for (int i = 0; i < n; i++)
-            we[i] = sc.nextInt();
-        int cap = sc.nextInt();
-        int dp[][] = new int[n + 1][cap + 1];
+            weight[i] = sc.nextInt();
+        int capacity = sc.nextInt();
+        int dp[][] = new int[n + 1][capacity + 1];
 
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[0].length; j++) {
-                if (j >= we[i - 1]) {
-                    if (val[i - 1] + dp[i - 1][j - we[i - 1]] > dp[i - 1][j]) {
-                        dp[i][j] = val[i - 1] + dp[i - 1][j - we[i - 1]];
-                    } else {
-                        dp[i][j] = dp[i - 1][j];
-                    }
+                if (weight[i - 1] <= j) {
+                    // if (value[i - 1] + dp[i - 1][j - weight[i - 1]] > dp[i - 1][j]) {
+                    // dp[i][j] = value[i - 1] + dp[i - 1][j - weight[i - 1]];
+                    // } else {
+                    // dp[i][j] = dp[i - 1][j];
+                    // }
+                    dp[i][j] = Math.max(value[i - 1] + dp[i - 1][j - weight[i - 1]], dp[i - 1][j]);
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }
             }
         }
 
-        System.out.println(dp[n][cap]);
+        System.out.println(dp[n][capacity]);
+
+        for (int row[] : dp) {
+            System.out.println(Arrays.toString(row));
+        }
 
         sc.close();
     }
