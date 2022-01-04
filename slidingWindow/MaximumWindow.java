@@ -23,29 +23,30 @@ public class MaximumWindow {
 
     static int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
-        int res[] = new int[n-k+1];
+        int res[] = new int[n - k + 1];
         Deque<Integer> pq = new LinkedList<>();
-        int i=0,j=0;
-        while(j<n){
-            if(!pq.isEmpty()){
-                while(!pq.isEmpty() && pq.peekLast()<nums[j]){
+        int i = 0, j = 0;
+        while (j < n) {
+            if (!pq.isEmpty()) {
+                while (!pq.isEmpty() && pq.peekLast() < nums[j]) {
                     pq.pollLast();
                 }
                 pq.addLast(nums[j]);
-            }else{
+            } else {
                 pq.add(nums[j]);
             }
-            if(j-i+1<k){               
-            }else if(j-i+1==k){
-                res[i]=pq.peekFirst();
-                if(nums[i]==pq.peekFirst()){
-                     pq.pollFirst();
+            if (j - i + 1 < k) {
+            } else if (j - i + 1 == k) {
+                res[i] = pq.peekFirst();
+                if (nums[i] == pq.peekFirst()) {
+                    pq.pollFirst();
                 }
                 i++;
             }
             j++;
         }
         return res;
+    }
 }
 
 // O/P : Input: nums = [1,3,
