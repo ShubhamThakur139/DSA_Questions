@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MinimumNumberOfArrow {
     public static void main(String[] args) {
         int[][] points = { { 10, 16 }, { 2, 8 }, { 1, 6 }, { 7, 12 } };
-        Arrays.sort(points, (a, b) -> a[1] - b[1]);
+        Arrays.sort(points, (a, b) -> Integer.compare(a[1] - b[1], 0));
         int count = 1;
         int arrPtr = points[0][1];
         int n = points.length;
