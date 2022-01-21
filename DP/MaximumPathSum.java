@@ -31,13 +31,14 @@ public class MaximumPathSum {
         return grid[0][0];
     }
 
-    private static int pathSum(int[][] grid, int i, int j) {
-        if (i == grid.length - 1 && j == grid[0].length - 1) {
-            return grid[i][j];
-        }
-        if (i > grid.length - 1 || j > grid[0].length - 1) {
-            return 0;
-        }
-        return grid[i][j] + Math.min(pathSum(grid, i + 1, j), pathSum(grid, i, j + 1));
-    }
+    // private static int pathSum(int[][] grid, int i, int j) {
+    // if (i == grid.length - 1 && j == grid[0].length - 1) {
+    // return grid[i][j];
+    // }
+    // if (i > grid.length - 1 || j > grid[0].length - 1) {
+    // return 0;
+    // }
+    // return grid[i][j] + Math.min(pathSum(grid, i + 1, j), pathSum(grid, i, j +
+    // 1));
+    // }
 }

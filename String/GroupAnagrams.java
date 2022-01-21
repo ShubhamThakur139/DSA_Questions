@@ -2,7 +2,6 @@ package String;
 // Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +23,11 @@ public class GroupAnagrams {
 
         Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
-            char carr[] = s.toCharArray();
-            Arrays.sort(carr);
+            char carr[] = new char[26];
+            for (char c : s.toCharArray()) {
+                carr[c - 'a']++;
+            }
+            // Arrays.sort(carr);
             String sortstr = String.valueOf(carr);
             if (!map.containsKey(sortstr)) {
                 map.put(sortstr, new ArrayList<>());
